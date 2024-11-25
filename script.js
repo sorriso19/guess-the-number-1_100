@@ -1,32 +1,40 @@
 'use strict';
 
+let randomNum = parseInt(Math.random() * 100);
 
-function guessNumber(myNum) {
-    
-    let userNum = +prompt('Угадай число от 1 до 100');
-    
-      const userNumber = function() {
-        
-        if (isNaN(parseFloat(userNum) && isFinite(userNum))) {
-            alert ('Введи число!');
-            userNum = +prompt('Введите новое число');
-        }  else if (userNum > myNum) {
-            alert ('Загаданное число меньше');
-            userNum = +prompt('Введите новое число');
-                      
-        } else if (userNum < myNum) {
-            alert ('Загаданное число больше');
-            userNum = +prompt('Введите новое число');
-       
-        } else if (userNum === myNum) {
-            alert ('Поздравляю, Вы угадали!'); 
-            
-        } else if (userNum === null) {
-          return confirm('Игра закончена');
+function isNum(num) {
+    return !isNaN(parseFloat(num)) && isFinite(num);
   }
-
-}
-userNumber()   
-    }
+function guessNumber() {
     
-        guessNumber(10);
+    let userNum = prompt('Угадай число от 1 до 100');
+    
+    if (isNum(userNum)) {
+        userNum = +userNum;
+    
+        if (userNum > randomNum) {
+            alert ('Загаданное число меньше');
+            
+           
+        } else if (userNum < randomNum) {
+            alert ('Загаданное число больше');
+            
+        
+        } else if (userNum === randomNum) {
+            alert ('Поздравляю, Вы угадали!'); 
+            return userNum;
+          
+        } 
+    } else {
+        confirm('Игра закончена');
+        return;
+    }
+
+     return guessNumber();
+}
+console.log(guessNumber());  
+   
+
+    
+    
+      
